@@ -1,5 +1,6 @@
 import { kv } from '@vercel/kv';
 import { notFound } from 'next/navigation';
+import { JSX } from 'react';
 
 async function getNoteContent(id: string): Promise<string | null> {
   try {
@@ -12,7 +13,7 @@ async function getNoteContent(id: string): Promise<string | null> {
   }
 }
 
-export default async function NotePage({ params }: { params: { id: string } }) {
+export default async function NotePage({ params }: { params: { id: string } }): Promise<JSX.Element> {
   const { id } = params;
   const noteContent = await getNoteContent(id);
 
