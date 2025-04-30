@@ -52,8 +52,8 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gray-50 dark:bg-gray-900 font-[family-name:var(--font-geist-sans)]">
-      <main className="w-full max-w-2xl p-8 space-y-6 bg-white rounded-lg shadow-md dark:bg-gray-800">
+    <div className="flex flex-col items-center justify-between min-h-screen p-4 bg-gray-50 dark:bg-gray-900 font-[family-name:var(--font-geist-sans)]">
+      <main className="w-full max-w-2xl p-8 space-y-6 bg-white rounded-lg shadow-md dark:bg-gray-800 mt-10 mb-auto">
         <h1 className="text-2xl font-bold text-center text-gray-900 dark:text-white">
           Create a Temporary Note
         </h1>
@@ -88,7 +88,8 @@ export default function Home() {
               <option value="2h">2 Hours</option>
               <option value="3h">3 Hours</option>
               <option value="1d">1 Day</option>
-              {/* Add more options if needed */}
+              <option value="3d">3 Days</option>
+              <option value="7d">7 Days</option>
             </select>
           </div>
 
@@ -128,7 +129,12 @@ export default function Home() {
             </div>
           </div>
         )}
+
       </main>
+
+      <footer className="w-full text-center p-4 text-xs text-gray-500 dark:text-gray-400">
+        Created by <a href="https://github.com/itsmeenavi" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-700 dark:hover:text-gray-300">itsmeenavi</a>
+      </footer>
     </div>
   );
 }

@@ -12,11 +12,11 @@ function durationToSeconds(duration: string): number {
   }
 
   switch (unit) {
-    case 'h':
+    case 'h': // Hours
       return value * 60 * 60;
-    case 'd':
+    case 'd': // Days
       return value * 24 * 60 * 60;
-    // Add more cases like 'm' for minutes if needed
+    // Removed comment about adding 'm'
     default:
       return 3600; // Default to 1 hour for unknown units
   }
