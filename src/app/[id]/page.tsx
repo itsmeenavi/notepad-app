@@ -1,12 +1,6 @@
 import { kv } from '@vercel/kv';
 import { notFound } from 'next/navigation';
 
-interface NotePageProps {
-  params: {
-    id: string;
-  };
-}
-
 async function getNoteContent(id: string): Promise<string | null> {
   try {
     // Attempt to retrieve the note text from Vercel KV
@@ -18,7 +12,7 @@ async function getNoteContent(id: string): Promise<string | null> {
   }
 }
 
-export default async function NotePage({ params }: NotePageProps) {
+export default async function NotePage({ params }: { params: { id: string } }) {
   const { id } = params;
   const noteContent = await getNoteContent(id);
 
