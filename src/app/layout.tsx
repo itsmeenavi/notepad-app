@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 // Remove Geist font imports
 // import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Toaster } from 'react-hot-toast';
 
 // Remove Geist font setup
 // const geistSans = Geist({
@@ -28,6 +29,10 @@ export default function RootLayout({
     <html lang="en">
       {/* Remove font variables from className */}
       <body className={`antialiased`}>
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+        />
         {children}
       </body>
     </html>

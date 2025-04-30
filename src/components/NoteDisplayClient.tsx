@@ -1,24 +1,20 @@
 'use client';
 
-import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 interface NoteDisplayClientProps {
   content: string;
 }
 
 export default function NoteDisplayClient({ content }: NoteDisplayClientProps) {
-  const [copyStatus, setCopyStatus] = useState('Copy Text');
-
   const handleCopyText = () => {
     navigator.clipboard.writeText(content)
       .then(() => {
-        setCopyStatus('Copied!');
-        setTimeout(() => setCopyStatus('Copy Text'), 2000); // Reset after 2 seconds
+        toast.success('Copied to clipboard!');
       })
       .catch(err => {
         console.error("Failed to copy text:", err);
-        setCopyStatus('Failed!');
-        setTimeout(() => setCopyStatus('Copy Text'), 2000);
+        toast.error('Failed to copy text.');
       });
   };
 
@@ -30,10 +26,9 @@ export default function NoteDisplayClient({ content }: NoteDisplayClientProps) {
         </h1>
         <button
           onClick={handleCopyText}
-          className="px-3 py-1 text-sm font-medium text-white bg-blue-600 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-offset-gray-800 disabled:opacity-50"
-          disabled={copyStatus !== 'Copy Text'} // Disable briefly after click
+          className="px-3 py-1 text-sm font-medium text-white bg-blue-600 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-offset-gray-800"
         >
-          {copyStatus}
+          Copy Text
         </button>
       </div>
       <pre className="whitespace-pre-wrap p-4 bg-gray-100 dark:bg-gray-700 rounded text-gray-900 dark:text-white text-sm font-[family-name:var(--font-geist-mono)] overflow-x-auto">

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react"; // We'll need state later
+import toast from 'react-hot-toast'; // Import toast
 
 export default function Home() {
   // Placeholder state and functions - we'll implement these later
@@ -46,8 +47,13 @@ export default function Home() {
   const handleCopy = () => {
     if (generatedLink) {
       navigator.clipboard.writeText(generatedLink)
-        .then(() => alert("Link copied!")) // Simple feedback
-        .catch(err => console.error("Failed to copy:", err));
+        .then(() => {
+           toast.success("Link copied!"); // Use success toast
+        })
+        .catch(err => {
+            console.error("Failed to copy link:", err);
+            toast.error("Failed to copy link."); // Use error toast
+        });
     }
   };
 

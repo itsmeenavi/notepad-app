@@ -36,11 +36,18 @@ export default async function NotePage({ params }: { params: { id: string } }) {
     notFound(); // Trigger Next.js 404 page
   }
 
-  // Render the client component with the fetched content
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gray-50 dark:bg-gray-900 font-[family-name:var(--font-geist-sans)]">
-       {/* Use the client component to display content and handle copy */}
-       <NoteDisplayClient content={noteContent} />
+    // Use flex-col and justify-between to push footer down
+    <div className="flex flex-col items-center justify-between min-h-screen p-4 bg-gray-50 dark:bg-gray-900 font-[family-name:var(--font-geist-sans)]">
+      {/* Add margin top/bottom to center the main content vertically */}
+      <main className="mt-auto mb-auto">
+        <NoteDisplayClient content={noteContent} />
+      </main>
+
+      {/* Added Footer */}
+      <footer className="w-full text-center p-4 text-xs text-gray-500 dark:text-gray-400">
+        Created by <a href="https://github.com/itsmeenavi" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-700 dark:hover:text-gray-300">itsmeenavi</a>
+      </footer>
     </div>
   );
 } 
